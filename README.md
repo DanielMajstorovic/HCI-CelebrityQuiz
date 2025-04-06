@@ -12,10 +12,10 @@ Aplikacija je razvijena kao studentski projekat u okviru predmeta *Human-Compute
 ![menu](https://github.com/user-attachments/assets/807b81d1-645a-4fb2-b845-4af4fd801186)
 
 Početni ekran nudi četiri glavne opcije:
-- [**10-Round Quiz Adventure!**](##10-Round-Quiz-Adventure!) – Standardni mod sa 10 uzastopnih pitanja.
-- [**Race Against Time!**](##Race-Against-Time!) – Vremenski izazov: pogodi što više glumaca prije isteka vremena.
-- [**Leaderboard**](##leaderboard) – Prikazuje listu najboljih rezultata.
-- [**Celebrities**](##celebrities) – Pregled svih glumaca koji se mogu pojaviti u kvizu.
+- [**10-Round Quiz Adventure!**](#10-round-quiz-adventure) – Standardni mod sa 10 uzastopnih pitanja.
+- [**Race Against Time!**](#race-against-time) – Vremenski izazov: pogodi što više glumaca prije isteka vremena.
+- [**Leaderboard**](#leaderboard) – Prikazuje listu najboljih rezultata.
+- [**Celebrities**](#celebrities) – Pregled svih glumaca koji se mogu pojaviti u kvizu.
 
 ---
 
@@ -29,7 +29,7 @@ Početni ekran nudi četiri glavne opcije:
 
 ---
 
-## 10-Round Quiz Adventure! 
+## 10-Round Quiz Adventure
 
 ### Tamni režim
 
@@ -46,30 +46,26 @@ Početni ekran nudi četiri glavne opcije:
 ### Prikaz rezultata
 
 - Korisnik može da pregleda svoje odgovore
-- Može da upiše svoj rezultat na [**Leaderboard**](##leaderboard)
+- Može da upiše svoj rezultat na [**Leaderboard**](#leaderboard)
 - Može da odabere opciju da igra opet isti mod ili da se vrati na glavni meni
 
 ![result-before](https://github.com/user-attachments/assets/ac13f8e2-7bbb-4bdc-80eb-4404a3639eac)
 
-
 ---
 
-## Race Against Time!
-
+## Race Against Time
 
 ![timed-mode](https://github.com/user-attachments/assets/07edd288-5637-4a40-b1c7-fecbdb26e440)
-
 
 ![result-timed](https://github.com/user-attachments/assets/8cf390eb-26e5-4689-910e-5903b6629232)
 
 - Prikaz rezultata omogućava korisniku da vidi koje glumce nije prepoznao, uz mogućnost da otkrije njihov pravi identitet.
 
-
 ---
 
 ## Leaderboard
 
-Leaderboard prikazuje najbolje rezultate svih igrača, rangirane prema broju osvojenih poena. Ovdje možete videti svoje postignuće, kao i uporediti svoj rezultat sa najboljima u igri. Na vrhu liste nalaze se igrači sa najvišim brojem bodova, a igrači mogu uneti svoje ime nakon završetka kviza da bi se rangirali.
+Leaderboard prikazuje najbolje rezultate svih igrača, rangirane prema broju osvojenih poena. Ovdje možete vidjeti svoje postignuće, kao i uporediti svoj rezultat sa najboljima u igri. Na vrhu liste nalaze se igrači sa najvišim brojem bodova, a igrači mogu unijeti svoje ime nakon završetka kviza da bi se rangirali.
 
 ### Rezultati za standardni mod
 
@@ -87,7 +83,6 @@ Celebrities prozor omogućava korisnicima da pregledaju i bolje se upoznaju sa g
 
 ![celebs](https://github.com/user-attachments/assets/dba4bac2-e832-4efb-b9dc-dc54fadfb519)
 
-
 ![john](https://github.com/user-attachments/assets/e928537a-a3dd-4636-aa07-9bf8d09dc01d)
 
 - Korisnici mogu tražiti glumca po njegovom imenu.
@@ -97,7 +92,3 @@ Celebrities prozor omogućava korisnicima da pregledaju i bolje se upoznaju sa g
 - Ali sa ovim gospodinom se nikada ne zna :)
 
 ![ceeena](https://github.com/user-attachments/assets/82d32937-e110-4035-b60a-f227ca72d915)
-
----
-
-
