@@ -1,0 +1,126 @@
+﻿<Window x:Class="CelebrityQuiz.View.QuizResultsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:local="clr-namespace:CelebrityQuiz" 
+        xmlns:local1="clr-namespace:CelebrityQuiz.Converters"
+        Title="Rezultati kviza" Height="700" Width="500"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        Icon="pack://application:,,,/Res/oscar.png">
+
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <local:ImageUrlConverter x:Key="ImageUrlConverter" />
+            <local1:BooleanToFeedbackColorConverter x:Key="BooleanToFeedbackColorConverter"/>
+            <local1:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <local1:IndexToSequenceNumberConverter x:Key="IndexToSequenceNumberConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+
+    <StackPanel Margin="20">
+        <TextBlock Text="{Binding FinalScore, StringFormat=Vaš konačni rezultat: {0}}"
+                       FontSize="24" 
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+        <TextBlock Text="{Binding QuestionsAnswered, StringFormat=Broj odgovorenih pitanja: {0}}"
+                       FontSize="18"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+        <materialDesign:Card Padding="16" Margin="0,0,0,20">
+            <StackPanel>
+                <!-- Actor Image -->
+                <Border 
+                        Width="100" 
+                        Height="150" 
+                        Margin="0,0,0,10"
+                        HorizontalAlignment="Center"
+                        CornerRadius="12"
+                        ClipToBounds="True"
+                        BorderThickness="4"
+                        BorderBrush="{Binding CurrentAnswer.IsCorrect, Converter={StaticResource BooleanToFeedbackColorConverter}}"
+                    >
+                    <Border.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="{Binding CurrentAnswer.CorrectActor.ImageUrl, Converter={StaticResource ImageUrlConverter}}"/>
+                    </Border.Background>
+                </Border>
+
+                <TextBlock FontSize="16"
+                               TextAlignment="Center"
+                               Foreground="{Binding CurrentAnswer.IsCorrect, Converter={StaticResource BooleanToFeedbackColorConverter}}"
+                               >
+                        <Run Text="{Binding CurrentAnswerIndex, Converter={StaticResource IndexToSequenceNumberConverter}, StringFormat={}{0}. }"/>
+                        <Run Text="{Binding CurrentAnswer.CorrectActor.Name}"/>
+                </TextBlock>
+
+                <TextBlock Text="{Binding CurrentAnswer.SelectedActor.Name, StringFormat=Vaš odgovor: {0}}"
+                               FontSize="16"
+                               TextAlignment="Center"
+                               Visibility="{Binding CurrentAnswer.IsCorrect, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=inverse}"/>
+            </StackPanel>
+        </materialDesign:Card>
+
+        <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center" 
+                        Margin="0,0,0,20">
+            <Button Style="{StaticResource MaterialDesignIconButton}"
+                        Command="{Binding NavigateLeftCommand}">
+                <materialDesign:PackIcon Kind="ChevronLeft"/>
+            </Button>
+            <Button Style="{StaticResource MaterialDesignIconButton}"
+                        Command="{Binding NavigateRightCommand}">
+                <materialDesign:PackIcon Kind="ChevronRight"/>
+            </Button>
+        </StackPanel>
+
+        <Button Content="Igraj ponovo"
+                Command="{Binding PlayAgainCommand}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="150"
+                Height="40"
+                Margin="0,0,0,20"/>
+
+        <Button Content="Idi na glavni meni"
+                Command="{Binding GoToMainMenuCommand}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="150"
+                Height="40"
+                Margin="0,0,0,20"/>
+
+        <Grid>
+            <StackPanel x:Name="SaveScorePanel" 
+                Visibility="{Binding IsScoreSaved, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=inverse}">
+                <TextBox Width="200"
+                 Text="{Binding PlayerName, UpdateSourceTrigger=PropertyChanged}"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Hint="Unesite vaše ime"
+                 Margin="0,0,0,10"/>
+
+                <Button Content="Upiši u leaderboard"
+                Command="{Binding SaveToLeaderboardCommand}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="200"
+                Height="40"
+                IsEnabled="{Binding CanSaveToLeaderboard}"/>
+            </StackPanel>
+
+            <TextBlock Text="Rezultat je uspješno upisan u leaderboard!"
+               FontSize="16"
+               TextAlignment="Center"
+               Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+               Visibility="{Binding IsScoreSaved, Converter={StaticResource BooleanToVisibilityConverter}}"
+               Margin="0,10,0,0"/>
+        </Grid>
+    </StackPanel>
+
+</Window>
